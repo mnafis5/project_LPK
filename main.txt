@@ -1,0 +1,4 @@
+Guides for using this repository
+-This is the LPKP's project
+-Everyone can edit or add a file
+-The programme is a website that display data from the database. It also catches if there's a message.  
