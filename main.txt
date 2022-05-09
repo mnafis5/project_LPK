@@ -1,4 +1,5 @@
 Guides for using this repository
+-LPKP is an independent organisation that provides programming lessons for the people who fired from his job or seek a job.
 -This is the LPKP's project
 -Everyone can edit or add a file
 -The programme is a website that display data from the database. It also catches if there's a message.  
