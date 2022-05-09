@@ -1,30 +1,90 @@
-<div class="container">
-    <h2 class="ms-3">Daftar Siswa LPKP</h2>
-    <div class="d-flex flex-row justify-content-between ms-6 bd-highlight align-middle float-end mb-5" style=" width: 430px; height:40px; margin-top:30px;">
-        <div class="search">
-            <form action="<?= BASEURL; ?>/daftar/cari" method="post" class="d-flex flex-row">
-                    <input type="text" class="me-2 form-control" placeholder="Cari siswa" aria-label="Recipient's username" aria-describedby="basic-addon2" name="keyword" id="keyword" autocomplete="off" autofocus >
-                    <button class="btn btn-outline-success" type="submit" id="tombolCari">Cari</button>
-            </form>
-        </div>
-        <a href="<?= BASEURL; ?>/daftar/add" class="btn align-middle btn-outline-primary">Tambah siswa</a>
-    </div>
-    <div style="padding: 10px 20px;">
-        <div class="container d-flex justify-content-evenly shadow mb-5 bg-body" style="padding: 60px 40px; height:auto; flex-wrap:wrap; border-radius: 10px;">
-          <?php foreach ($data['mhs'] as $mhs) : ?>
-                <div class="card shadow-sm" style="width: 18rem; padding-top:25px; border-radius:15px; margin:16px 16px; border-color:lightblue;">
-                  <img src="<?= BASEURL;?>/img/<?= $data['img'];?>.jpg" class="card-img-center" alt="..." style="width: 125px; margin:auto;">
-                  <div class="card-body" style="margin-bottom: 25px;">
-                    <h4 class="card-title text-center"><?= $mhs["nama"]; ?></h4>
-                    <p class="card-text text-center"><?= $mhs["num"];?></p>
-                  </div>
-                    <div class="card-body d-flex justify-content-between" style=" width:250px; height: 40px; margin:auto; margin-bottom:25px; padding:0;">
-                      <a href="<?= BASEURL; ?>/daftar/hapus/<?= $mhs['id']; ?>" onclick="return confirm('apakah yakin ingin dihapus?')" class="card-link btn btn-outline-danger">Hapus</a>
-                      <a href="<?= BASEURL; ?>/daftar/detail/<?= $mhs['id']; ?>" class="card-link btn btn-outline-info">Detail</a>
-                      <a href="<?= BASEURL; ?>/daftar/addPictures/<?= $mhs['id']; ?>" class="card-link btn btn-outline-primary">Upload</a>
-                    </div>
-                  </div>
-          <?php endforeach ?>
-        </div>
-    </div>
-                    
+<!-- Slideshow container -->
+<div class="slideshow-container">
+    <a class="prev" onclick="plusSlides(-1)">❮</a>
+    <a class="next" onclick="plusSlides(1)">❯</a>
+    
+  <!-- Full-width images with number and caption text -->
+  <div class="mySlides fade">
+    <img src="<?= BASEURL; ?>/img/image1.png" style="width:100%">
+  </div>
+
+  <div class="mySlides fade">
+    <img src="<?= BASEURL; ?>/img/image2.jpg" style="width:100%">
+  </div>
+
+  <div class="mySlides fade">
+    <img src="<?= BASEURL; ?>/img/image3.jpg" style="width:100%">
+  </div>
+
+  <div class="mySlides fade">
+    <img src="<?= BASEURL; ?>/img/image4.png" style="width:100%">
+  </div>
+  <!-- Next and previous buttons -->
+
+</div>
+<br>
+
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1)"></span> 
+  <span class="dot" onclick="currentSlide(2)"></span> 
+  <span class="dot" onclick="currentSlide(3)"></span> 
+</div>
+
+<script>
+let slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+}
+</script>
+<style>
+    .prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+.myslides{
+  width:fit-content;
+}
+</style>
